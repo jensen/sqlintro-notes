@@ -1,12 +1,12 @@
 # An Introduction to SQL
 
-The data is your product. That is why SQL is important. SQL is the window into this data. You will learn just enough to do some basic operations. Understanding the basics of inserting and selecting data will allow you to build any of the midterm projects. 
+The data is your product. That is why SQL is important. SQL is the window into this data. You will learn just enough to do some basic operations. Understanding the basics of inserting and selecting data will allow you to build any of the midterm projects.
 
-SQL is an incredible language for querying large data sets. As a company collects more data they gain insight into their customers behaviour. This allows them to run their business more efficiently. 
+SQL is an incredible language for querying large data sets. As a company collects more data they gain insight into their customers behaviour. This allows them to run their business more efficiently.
 
-The example we will use today includes the type of model you would expect for a bootcamp. We will have cohorts and students. The students will have created assistance requests and assignment submissions. We can use this data to gain insights that normally are unclear. 
+The example we will use today includes the type of model you would expect for a bootcamp. We will have cohorts and students. The students will have created assistance requests and assignment submissions. We can use this data to gain insights that normally are unclear.
 
-SQL isn't like other languages. Keep that in mind while you are exploring it. It won't feel right because it will be confusing at first and hard for a while. 
+SQL isn't like other languages. Keep that in mind while you are exploring it. It won't feel right because it will be confusing at first and hard for a while.
 
 This language has been around since 1974. It's older than most of us. The strength of SQL has allowed it to endure all of these years.
 
@@ -22,7 +22,7 @@ What do CSV, XML and JSON have in common? They allow us to format our data in a 
 
 JSON is not perfect in any way. It does provide benefits over CSV and XML. We can easily convert JavaScript objects into JSON using the `JSON.stringify()` method. This is a process called serialization. The opposite process is called deserialization. It will convert JSON text to a JavaScript object using `JSON.parse()`. We can add persistence by saving each change to a text file. Load the data from the file and provide it as the default data object when the server starts.
 
-The `persist/` directory contains an example of an express app that saves it's database object to a file. After installing the dependencies you can run the app and go to `http://localhost:3000/` to see a list of students. I can use an HTTP client like cURL to make a request to create a student. 
+The `persist/` directory contains an example of an express app that saves it's database object to a file. After installing the dependencies you can run the app and go to `http://localhost:3000/` to see a list of students. I can use an HTTP client like cURL to make a request to create a student.
 
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Baxter Acerbi", "email":"bacerbi@email.com", "phone":"800 555 4567"}' -v http://localhost:3000/students
@@ -40,7 +40,7 @@ http POST localhost:3000/students name='Baxter Acerbi' email='bacerbi@email.com'
 
 Saving a JSON file to storage provides persistence but not much else. It will not scale. A database like MongoDB provides a wrapper around this concept. You can create documents. Each one of the documents is a JSON object. That way you aren't as limited by reading and writing to the single file.
 
-You will use a [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) for your midterm. 
+You will use a [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system) for your midterm.
 
 A RDBMS provides benefits that make it the choice for web application developers around the world.
 
@@ -68,11 +68,11 @@ It is incredibly difficult to manage a database that stores the same information
 +--------------------------------------+
 | id | name              | cohort_name |
 +--------------------------------------+
-| 1  | Sam Billings      | FEB12       | 
-| 2  | Susan Hudson      | MAR12       | 
+| 1  | Sam Billings      | FEB12       |
+| 2  | Susan Hudson      | MAR12       |
 | 3  | Malloy Jenkins    | APR09       |
-| 4  | Maximilian Alesio | APR09       | 
-| 5  | Pegasus Larue     | APR09       | 
+| 4  | Maximilian Alesio | APR09       |
+| 5  | Pegasus Larue     | APR09       |
 +--------------------------------------+
 ```
 
@@ -84,11 +84,11 @@ We would consider this denormalized because the cohort name is repeated for 3 of
 +------------------------------------+   +------------+
 | id | name              | cohort_id |   | id | name  |
 +------------------------------------+   +------------+
-| 1  | Sam Billings      | 1         |   | 1  | FEB12 | 
+| 1  | Sam Billings      | 1         |   | 1  | FEB12 |
 | 2  | Susan Hudson      | 2         |   | 2  | MAR12 |
 | 3  | Malloy Jenkins    | 3         |   | 3  | APR09 |
 | 4  | Maximilian Alesio | 3         |   +------------+
-| 5  | Pegasus Larue     | 3         | 
+| 5  | Pegasus Larue     | 3         |
 +------------------------------------+
 ```
 
@@ -107,13 +107,13 @@ We use naming conventions to increase consistency which provides us with some le
 - Use `snake_case` for table and column names.
 - Pluralize tables names, column names should be singular.
 - Call your primary key `id`. Why not?
-- For most foreign keys use `<table>_id`. 
+- For most foreign keys use `<table>_id`.
 
 ```
 +----------------+
 |    students    |  <-- Plural
 +----------------+
-| PK | id        |  <-- Primary Key 
+| PK | id        |  <-- Primary Key
 |    | name      |  <-- Singular
 | FK | cohort_id |  <-- <table>_id
 +----------------+
@@ -127,7 +127,7 @@ When defining relationships between tables you will often want to create a one-t
 
 ```
        MANY                            ONE
-+-----------------+            +-----------------+ 
++-----------------+            +-----------------+
 |     students    |            |     cohorts     |
 +-----------------+            +-----------------+
 | PK | id         |       /----| PK | id         |
@@ -142,50 +142,50 @@ When defining relationships between tables you will often want to create a one-t
 __The foreign key is on the many side.__ *The foreign key is on the many side.* `The foreign key is on the many side.`
 
 ```ruby
-(`-')       (`-').->  (`-')  _ 
-( OO).->    (OO )__   ( OO).-/ 
-/    '._   ,--. ,'-' (,------. 
-|'--...__) |  | |  |  |  .---' 
-`--.  .--' |  `-'  | (|  '--.  
-   |  |    |  .-.  |  |  .--'  
-   |  |    |  | |  |  |  `---. 
-   `--'    `--' `--'  `------' 
+(`-')       (`-').->  (`-')  _
+( OO).->    (OO )__   ( OO).-/
+/    '._   ,--. ,'-' (,------.
+|'--...__) |  | |  |  |  .---'
+`--.  .--' |  `-'  | (|  '--.
+   |  |    |  .-.  |  |  .--'
+   |  |    |  | |  |  |  `---.
+   `--'    `--' `--'  `------'
 
-                         (`-')   (`-')  _   _                 <-. (`-')_ 
+                         (`-')   (`-')  _   _                 <-. (`-')_
    <-.          .->   <-.(OO )   ( OO).-/  (_)         .->       \( OO) )
-(`-')-----.(`-')----. ,------,) (,------.  ,-(`-')  ,---(`-') ,--./ ,--/ 
-(OO|(_\---'( OO).-.  '|   /`. '  |  .---'  | ( OO) '  .-(OO ) |   \ |  | 
+(`-')-----.(`-')----. ,------,) (,------.  ,-(`-')  ,---(`-') ,--./ ,--/
+(OO|(_\---'( OO).-.  '|   /`. '  |  .---'  | ( OO) '  .-(OO ) |   \ |  |
  / |  '--. ( _) | |  ||  |_.' | (|  '--.   |  |  ) |  | .-, \ |  . '|  |)
- \_)  .--'  \|  |)|  ||  .   .'  |  .--'  (|  |_/  |  | '.(_/ |  |\    | 
-  `|  |_)    '  '-'  '|  |\  \   |  `---.  |  |'-> |  '-'  |  |  | \   | 
-   `--'       `-----' `--' '--'  `------'  `--'     `-----'   `--'  `--' 
+ \_)  .--'  \|  |)|  ||  .   .'  |  .--'  (|  |_/  |  | '.(_/ |  |\    |
+  `|  |_)    '  '-'  '|  |\  \   |  `---.  |  |'-> |  '-'  |  |  | \   |
+   `--'       `-----' `--' '--'  `------'  `--'     `-----'   `--'  `--'
 
-<-.(`-')   (`-')  _                  _       (`-').-> 
- __( OO)   ( OO).-/      .->        (_)      ( OO)_   
-'-'. ,--. (,------.  ,--.'  ,-.     ,-(`-') (_)--\_)  
-|  .'   /  |  .---' (`-')'.'  /     | ( OO) /    _ /  
-|      /) (|  '--.  (OO \    /      |  |  ) \_..`--.  
-|  .   '   |  .--'   |  /   /)     (|  |_/  .-._)   \ 
-|  |\   \  |  `---.  `-/   /`       |  |'-> \       / 
-`--' '--'  `------'    `--'         `--'     `-----'  
+<-.(`-')   (`-')  _                  _       (`-').->
+ __( OO)   ( OO).-/      .->        (_)      ( OO)_
+'-'. ,--. (,------.  ,--.'  ,-.     ,-(`-') (_)--\_)
+|  .'   /  |  .---' (`-')'.'  /     | ( OO) /    _ /
+|      /) (|  '--.  (OO \    /      |  |  ) \_..`--.
+|  .   '   |  .--'   |  /   /)     (|  |_/  .-._)   \
+|  |\   \  |  `---.  `-/   /`       |  |'-> \       /
+`--' '--'  `------'    `--'         `--'     `-----'
 
-           <-. (`-')_     (`-')       (`-').->  (`-')  _ 
-     .->      \( OO) )    ( OO).->    (OO )__   ( OO).-/ 
-(`-')----. ,--./ ,--/     /    '._   ,--. ,'-' (,------. 
-( OO).-.  '|   \ |  |     |'--...__) |  | |  |  |  .---' 
-( _) | |  ||  . '|  |)    `--.  .--' |  `-'  | (|  '--.  
- \|  |)|  ||  |\    |        |  |    |  .-.  |  |  .--'  
-  '  '-'  '|  | \   |        |  |    |  | |  |  |  `---. 
+           <-. (`-')_     (`-')       (`-').->  (`-')  _
+     .->      \( OO) )    ( OO).->    (OO )__   ( OO).-/
+(`-')----. ,--./ ,--/     /    '._   ,--. ,'-' (,------.
+( OO).-.  '|   \ |  |     |'--...__) |  | |  |  |  .---'
+( _) | |  ||  . '|  |)    `--.  .--' |  `-'  | (|  '--.
+ \|  |)|  ||  |\    |        |  |    |  .-.  |  |  .--'
+  '  '-'  '|  | \   |        |  |    |  | |  |  |  `---.
    `-----' `--'  `--'        `--'    `--' `--'  `------'
 
-<-. (`-')   (`-')  _  <-. (`-')_                 (`-').->   _       _(`-')     (`-')  _     
-   \(OO )_  (OO ).-/     \( OO) )     .->        ( OO)_    (_)     ( (OO ).->  ( OO).-/     
-,--./  ,-.) / ,---.   ,--./ ,--/  ,--.'  ,-.    (_)--\_)   ,-(`-')  \    .'_  (,------.     
-|   `.'   | | \ /`.\  |   \ |  | (`-')'.'  /    /    _ /   | ( OO)  '`'-..__)  |  .---'     
-|  |'.'|  | '-'|_.' | |  . '|  |)(OO \    /     \_..`--.   |  |  )  |  |  ' | (|  '--.      
-|  |   |  |(|  .-.  | |  |\    |  |  /   /)     .-._)   \ (|  |_/   |  |  / :  |  .--'      
-|  |   |  | |  | |  | |  | \   |  `-/   /`      \       /  |  |'->  |  '-'  /  |  `---. ,-. 
-`--'   `--' `--' `--' `--'  `--'    `--'         `-----'   `--'     `------'   `------' '-' 
+<-. (`-')   (`-')  _  <-. (`-')_                 (`-').->   _       _(`-')     (`-')  _
+   \(OO )_  (OO ).-/     \( OO) )     .->        ( OO)_    (_)     ( (OO ).->  ( OO).-/
+,--./  ,-.) / ,---.   ,--./ ,--/  ,--.'  ,-.    (_)--\_)   ,-(`-')  \    .'_  (,------.
+|   `.'   | | \ /`.\  |   \ |  | (`-')'.'  /    /    _ /   | ( OO)  '`'-..__)  |  .---'
+|  |'.'|  | '-'|_.' | |  . '|  |)(OO \    /     \_..`--.   |  |  )  |  |  ' | (|  '--.
+|  |   |  |(|  .-.  | |  |\    |  |  /   /)     .-._)   \ (|  |_/   |  |  / :  |  .--'
+|  |   |  | |  | |  | |  | \   |  `-/   /`      \       /  |  |'->  |  '-'  /  |  `---. ,-.
+`--'   `--' `--' `--' `--'  `--'    `--'         `-----'   `--'     `------'   `------' '-'
 
 ```
 
@@ -218,7 +218,7 @@ When defining columns for the tables you will need to specify the data type. `IN
 
 - Primary key column. Use the name `id` and then `SERIAL PRIMARY KEY NOT NULL`.
 - Names, emails, usernames and passwords can all be stored as `VARCHAR(255)`.
-- Foreign key columns. Add `_id` to the singular name of the column you are referencing. Students to cohorts would be `cohorts_id`. The type would be `INTEGER` but you also should create the foreign key with `REFERENCES cohorts(id) ON DELETE CASCADE`.
+- Foreign key columns. Add `_id` to the singular name of the column you are referencing. Students to cohorts would be `cohort_id`. The type would be `INTEGER` but you also should create the foreign key with `REFERENCES cohorts(id) ON DELETE CASCADE`.
 - Dates would use the `DATE` type. If you needed [date and time](https://www.postgresql.org/docs/current/static/datatype-datetime.html) you would use `TIMESTAMP`.
 
 You will use `INTEGER` to represent most [numbers](https://www.postgresql.org/docs/current/static/datatype-numeric.html). There are other *sizes* of integers as well.
@@ -231,7 +231,7 @@ You will use `INTEGER` to represent most [numbers](https://www.postgresql.org/do
 ### Dates, Phone Numbers & Currency
 
 - Become familiar with the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date formatting standard. The string `'2018-02-12'` uses this format to represent 'February 12th, 2018'. Year, month and then day. Dates should be stored consistency. Apply timezones and formatting when displayed to the user.
-- Store phone numbers as `VARCHAR`, there are so many possible formats. The number `214 748 3647` hits our `INTEGER` limit. 
+- Store phone numbers as `VARCHAR`, there are so many possible formats. The number `214 748 3647` hits our `INTEGER` limit.
 - Store currency as an integer representing cents. Use a `BIGINT` if you need values over $21 million dollars.
 - Read up on assumptions made by people with regard to peoples names. [Falsehoods Programmers Believe About Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
 
@@ -239,9 +239,9 @@ There is a [list](https://github.com/kdeldycke/awesome-falsehood) of other resou
 
 ### Indexes
 
-We are able to define [indexes](https://www.postgresql.org/docs/current/static/indexes.html) on tables. Any column can be an index but not all columns make good indexes. 
+We are able to define [indexes](https://www.postgresql.org/docs/current/static/indexes.html) on tables. Any column can be an index but not all columns make good indexes.
 
-Adding a `PRIMARY KEY` satisfies the minimum indexing requirements for a table. A table requires at least one column that is guaranteed to have a unique value for each row. 
+Adding a `PRIMARY KEY` satisfies the minimum indexing requirements for a table. A table requires at least one column that is guaranteed to have a unique value for each row.
 
 __A JavaScript Example__
 
@@ -294,7 +294,7 @@ Since we know the id we are looking for then we could do an object lookup instea
 const student = students['rtwj0V']
 ```
 
-This is __MUCH__ faster for the JavaScript engine to execute. 
+This is __MUCH__ faster for the JavaScript engine to execute.
 
 Examine the example in `performance/` to see the difference in execution time between these two approaches. If you are starting with an Array then sometimes it is a good idea to create an index (object with keys pointing directly to records). The code to generate the index is:
 
@@ -303,7 +303,7 @@ const indexed = students.reduce((previous, current) => {
   const record = {
     [current.id]: current
   }
-  
+
   return Object.assign(previous, record)
 }, {})
 ```
@@ -327,7 +327,7 @@ It is common to refer to most web applications as CRUD applications. The purpose
 
 ### Database Client
 
-Before we can query for anyting we need to connect to the database with a client. We wil begin by using `psql` which should be installed for you already.
+Before we can query for anyting we need to connect to the database with a client. We will begin by using `psql` which should be installed for you already.
 
 When connecting to a database you generally have to know the hostname, username, password, port and database name. When you run `psql --help` you will be provided with details on the options you can use to start the client. Near the bottom there are 'Connection options'. These should show you what the default values are for your hostname, port and username.
 
@@ -355,7 +355,7 @@ We can type queries ending with the semi-colon. Then hit enter.
 
 __Importing Schema__
 
-If you have a `schema.sql` file the contains a number of commands you want to run you can use `psql w4d1 < schema.sql`. If you have already started the client then you can use the command `\i schema.sql`. If there is an error that the file cannot be found then make sure you are in the right directory. 
+If you have a `schema.sql` file that contains a number of commands you want to run you can use `psql w4d1 < schema.sql`. If you have already started the client then you can use the command `\i schema.sql`. If there is an error that the file cannot be found then make sure you are in the right directory.
 
 > All queries in these examples have been run on the `bootcamp/seed.sql` data set.
 
@@ -376,7 +376,7 @@ CREATE TABLE cohorts (
 
 ### Altering a Table
 
-We are not stuck with our initial schema. We can modidfy existing tables. Some actions you could take:
+We are not stuck with our initial schema. We can modify existing tables. Some actions you could take:
 
 - Add or remove a column.
 - Change an existing column type.
@@ -436,9 +436,9 @@ INSERT INTO cohorts (id, name, start_date, end_date) VALUES
 
 ### READ/SELECT
 
-The selection of data is likely to cause the most confusion for you. There are 6 different clauses that you would use to query for data. 
+The selection of data is likely to cause the most confusion for you. There are 6 different clauses that you would use to query for data.
 
-- __SELECT__ - List the columns and aggregate data you interested in.
+- __SELECT__ - List the columns and aggregate data you are interested in.
 - __FROM__ - Provide one or more tables that you want data from.
 - __WHERE__ - Only select records that match a condition.
 - __GROUP BY__ - Combine the results based on a column so an aggregate can be applied to each group.
@@ -463,7 +463,7 @@ SELECT * FROM students;
 
 ```
 
-> I want all of the data for some of the fields on the students table. 
+> I want all of the data for some of the fields on the students table.
 
 This will display the id, name and cohort_id rows from the students table.
 
@@ -588,7 +588,7 @@ ORDER BY count(id) DESC;
 
 ### UPDATE & DELETE
 
-These queries seem to be a lot simpler than ones that begin with `SELECT`. The `UPDATE` and `DELETE` are the most dangerous queries because they change or remove data. This means you need to be very careful when using either of these. Never write an `UPDATE` or `DELETE` query without a `WHERE` clause.
+These queries seem to be a lot simpler than ones that begin with `SELECT`. The `UPDATE` and `DELETE` are the most dangerous queries because they change or remove data. This means you need to be very careful when using either of them. Never write an `UPDATE` or `DELETE` query without a `WHERE` clause.
 
 Here is a [story](https://www.reddit.com/r/cscareerquestions/comments/6ez8ag/accidentally_destroyed_production_database_on/) about a situation where a developer deleted the production database on their first day. It wasn't their fault but how many times could you do this before you could no longer get hired?
 
@@ -614,7 +614,7 @@ DELETE FROM students WHERE id = 3;
 
 I prefer to have a `deleted_at` column that stores a DATE. That way you can still filter out deleted results without having to lose the data. Storage is not expensive.
 
-You've seen a reference to `ON DELETE CASCADE` for foreign key references. If we delete a cohort then we may want to delete all of the students that point to the record. The cascading delete functionality is a [constraint](https://www.postgresql.org/docs/current/static/ddl-constraints.html). It is not necessary but it may cause you some issues when trying to delete something that has a foreign reference to it.
+You've seen a reference to `ON DELETE CASCADE` for foreign key references. If we delete a cohort then we may want to delete all of the students that point to the record. The cascading delete functionality is a [constraint](https://www.postgresql.org/docs/current/static/ddl-constraints.html). It is not necessary to use CASCADE. If you don't you may notice some issues when trying to delete something that has a foreign reference to it.
 
 ## JOIN
 
@@ -634,7 +634,7 @@ SELECT * FROM T1 JOIN T2 ON <condition>;
 
 In this example `T1` is the table on the `LEFT` of the join and `T2` is on the `RIGHT`. This becomes important when working with `OUTER JOIN`.
 
-When we start joining tables we need to be unambiguous. We will target columns by table.column naming. 
+When we start joining tables we need to be unambiguous. We will target columns by table.column naming.
 
 - `students.id`
 - `students.name`
@@ -649,10 +649,10 @@ With an `INNER JOIN` only rows where the `ON` condition is met are included in t
 ```
 +---------------------------------+        +------------+
 | students                        |  JOIN  | cohorts    |
-+---------------------------------+        +----+-------+ 
++---------------------------------+        +----+-------+
 | id | name           | cohort_id |        | id | name  |
 +---------------------------------+        +------------+
-| 1  | Sam Billings   | 1         |        | 1  | FEB12 | 
+| 1  | Sam Billings   | 1         |        | 1  | FEB12 |
 | 2  | Susan Hudson   | null      |        | 2  | MAR12 |
 | 3  | Malloy Jenkins | 3         |        | 3  | APR09 |
 +---------------------------------+        +------------+
@@ -669,7 +669,7 @@ ON cohorts.id = students.cohort_id;
 +-----------------------------------+
 | id | name           | cohort_name |
 +-----------------------------------+
-| 1  | Sam Billings   | FEB12       | 
+| 1  | Sam Billings   | FEB12       |
 | 3  | Malloy Jenkins | APR09       |
 +-----------------------------------+
 ```
@@ -683,10 +683,10 @@ The `OUTER JOIN` requires us to specify whether it is the `LEFT` or `RIGHT` tabl
 ```
 +---------------------------------+        +------------+
 | students                        |  JOIN  | cohorts    |
-+---------------------------------+        +----+-------+ 
++---------------------------------+        +----+-------+
 | id | name           | cohort_id |        | id | name  |
 +---------------------------------+        +------------+
-|  1 | Sam Billings   | 1         |        |  1 | FEB12 | 
+|  1 | Sam Billings   | 1         |        |  1 | FEB12 |
 |  2 | Susan Hudson   | null      |        |  2 | MAR12 |
 |  3 | Malloy Jenkins | 3         |        |  3 | APR09 |
 +---------------------------------+        +------------+
@@ -703,7 +703,7 @@ ON cohorts.id = students.cohort_id;
 +-----------------------------------+
 | id | name           | cohort_name |
 +-----------------------------------+
-|  1 | Sam Billings   | FEB12       | 
+|  1 | Sam Billings   | FEB12       |
 |  2 | Susan Hudson   | null        |
 |  3 | Malloy Jenkins | APR09       |
 +-----------------------------------+
@@ -713,7 +713,7 @@ Since this was a `LEFT JOIN` after all the rows are matched the remaining ones a
 
 __RIGHT OUTER JOIN__
 
-This is an uncommon join. Since we have to specify the side to join on we have two options. In the above example the cohorts table is on the right side of the join. If we turn this into a `RIGHT OUTER JOIN` then we get different results back. 
+This is an uncommon join. Since we have to specify the side to join on we have two options. In the above example the cohorts table is on the right side of the join. If we turn this into a `RIGHT OUTER JOIN` then we get different results back.
 
 ```sql
 SELECT students.id, students.name AS student_name, cohorts.name AS cohort_name
@@ -766,7 +766,7 @@ WHERE cohorts.id = students.cohort_id;
 
 Thank you for reading this far. It means a lot to me.
 
-Soon you will be introduced to ORM (Object Relational Mapping) libraries. The most popular one is [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) made popular by the Rails framework. The [Active Record pattern](https://martinfowler.com/eaaCatalog/activeRecord.html) was released in the 2002 book [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html). 
+Soon you will be introduced to ORM (Object Relational Mapping) libraries. The most popular one is [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html) made popular by the Rails framework. The [Active Record pattern](https://martinfowler.com/eaaCatalog/activeRecord.html) was released in the 2002 book [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html).
 
 When you are working on the ActiveRecord material later in the program take a look at the SQL queries being generated. It will show up in the output. ActiveRecord can *feel* easier than SQL because it hides the queries from you.
 
@@ -774,6 +774,6 @@ __Database Libraries__
 
 - Last ORM I tried: http://docs.sequelizejs.com/
 - Most Popular ORM: https://github.com/rails/rails/tree/master/activerecord/
-- Migrations: http://knexjs.org/ 
+- Migrations: http://knexjs.org/
 - Others told me to avoid: http://bookshelfjs.org/
 - Next one I'll try: https://github.com/typeorm/typeorm/

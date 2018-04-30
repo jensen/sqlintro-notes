@@ -1,0 +1,14 @@
+{
+  "name": "persist",
+  "version": "1.0.0",
+  "description": "An example of creating a persitent JSON store using file writes/reads.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karl Jensen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

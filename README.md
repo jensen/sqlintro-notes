@@ -412,12 +412,10 @@ Before we can search for data we need to add it. In order to create records in a
 ```sql
 INSERT
 INTO cohorts (
-  id,
   name,
   start_date,
   end_date
 ) VALUES (
-  1,
   'FEB12',
   '2018-02-12T08:00:00.000Z',
   '2018-04-20T07:00:00.000Z'
@@ -427,11 +425,11 @@ INTO cohorts (
 If you need to insert multiple records at the same time a single query is quicker than many. It is important to do as few queries as possible to keep performance high.
 
 ```sql
-INSERT INTO cohorts (id, name, start_date, end_date) VALUES
-(1, 'FEB12', '2018-02-12T08:00:00.000Z', '2018-04-20T07:00:00.000Z'),
-(2, 'MAR12', '2018-03-12T07:00:00.000Z', '2018-05-18T07:00:00.000Z'),
-(3, 'APR09', '2018-04-09T07:00:00.000Z', '2018-06-15T07:00:00.000Z'),
-(4, 'MAY07', '2018-05-07T07:00:00.000Z', '2018-07-13T07:00:00.000Z');
+INSERT INTO cohorts (name, start_date, end_date) VALUES
+('FEB12', '2018-02-12T08:00:00.000Z', '2018-04-20T07:00:00.000Z'),
+('MAR12', '2018-03-12T07:00:00.000Z', '2018-05-18T07:00:00.000Z'),
+('APR09', '2018-04-09T07:00:00.000Z', '2018-06-15T07:00:00.000Z'),
+('MAY07', '2018-05-07T07:00:00.000Z', '2018-07-13T07:00:00.000Z');
 ```
 
 ### READ/SELECT

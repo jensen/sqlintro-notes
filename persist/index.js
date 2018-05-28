@@ -10,7 +10,7 @@ const pretty = json => JSON.stringify(json, null, 2)
 
 const database = path.resolve(__dirname, './students.json')
 
-/* Create the file if it doesn't exists. */
+/* Create the file if it doesn't exist. */
 if(fs.existsSync(database) === false) fs.closeSync(fs.openSync(database, 'w+'))
 
 /* Read the JSON file and when the result is passed through the callback, setup the server routes. */
@@ -38,7 +38,7 @@ fs.readFile(database, 'utf8', (error, result) => {
     /* Serialize the object and write it to the JSON file. */
     fs.writeFile(database, pretty(students), 'utf-8', (error, result) => {
       console.log('Updated persistent data store.')
-      
+
       response.setHeader('Content-Type', 'text/plain')
       response.status(201)
       response.send(pretty(student))
@@ -48,5 +48,5 @@ fs.readFile(database, 'utf8', (error, result) => {
   app.listen(3000, () => {
     console.log(`Server listening on port 3000`)
   })
-  
+
 })

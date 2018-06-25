@@ -76,7 +76,7 @@ It is incredibly difficult to manage a database that stores the same information
 +--------------------------------------+
 ```
 
-We would consider this denormalized because the cohort name is repeated for 3 of the students. In order to denormalize this database we would split the data into two related tables.
+We would consider this denormalized because the cohort name is repeated for 3 of the students. In order to normalize this database we would split the data into two related tables.
 
 ```
 +------------------------------------+   +------------+
@@ -230,12 +230,12 @@ You will use `INTEGER` to represent most [numbers](https://www.postgresql.org/do
 
 ### Dates, Phone Numbers & Currency
 
-- Become familiar with the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date formatting standard. The string `'2018-02-12'` uses this format to represent 'February 12th, 2018'. Year, month and then day. Dates should be stored consistency. Apply timezones and formatting when displayed to the user.
+- Become familiar with the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date formatting standard. The string `'2018-02-12'` uses this format to represent 'February 12th, 2018'. Year, month and then day. Dates should be stored consistently. Apply timezones and formatting when displayed to the user.
 - Store phone numbers as `VARCHAR`, there are so many possible formats. The number `214 748 3647` hits our `INTEGER` limit.
 - Store currency as an integer representing cents. Use a `BIGINT` if you need values over $21 million dollars.
 - Read up on assumptions made by people with regard to peoples names. [Falsehoods Programmers Believe About Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
 
-There is a [list](https://github.com/kdeldycke/awesome-falsehood) of other resources discussing falsehoods. Gender is no longer considered binary. Addresses, language and units of measurement are all poorly understood by most of us. The good news is that there is a collection of information out there that we previously did not have access to.
+There is a [list](https://github.com/kdeldycke/awesome-falsehood) of other resources discussing falsehoods. Gender is no longer considered binary. Addresses, language and units of measurement are all poorly understood by most of us. The good news is that there is a collection of information out there that we previously did not have access to. The Internet.
 
 ### Indexes
 
@@ -261,7 +261,7 @@ const students = [
 ]
 ```
 
-If I know the `id` for the record I want to find the approach I take is different based on the data structure I'm using. In this example we want the record with the `id` of 'rtwj0V'. It's easy for us when we can see the whole data set. Without searching I can tell you that is the 'Embla Bösch' record.
+I know the `id` for the record I want to find. The approach I take is different based on the data structure I'm using. In this example we want the record with the `id` of 'rtwj0V'. It's easy for us when we can see the whole data set. Without searching I can tell you that is the 'Embla Bösch' record.
 
 To search the Array programatically I would write code like this:
 
@@ -304,7 +304,7 @@ const indexed = students.reduce((previous, current) => {
     [current.id]: current
   }
 
-  return Object.assign(previous, record)
+  return Object.assign({}, previous, record)
 }, {})
 ```
 
@@ -316,7 +316,7 @@ Now back to databases.
 
 ## The Structured Query Language (SQL)
 
-Our goal is to build web applications. We can get away we an adequate understanding of SQL. If you are going to focus on user interface development then allocate your time to learning CSS. If you want to work on web servers then learn SQL. Learn how to use it to make your job easier and your application faster.
+Our goal is to build web applications. We can get away with an adequate understanding of SQL. If you are going to focus on user interface development then allocate your time to learning CSS. If you want to work on web servers then learn SQL. Learn how to use it to make your job easier and your application faster.
 
 It is common to refer to most web applications as CRUD applications. The purpose is to facilitate the Creation, Reading, Updating and Deletion of resources. The four major types of queries follow this pattern as well.
 
@@ -361,7 +361,7 @@ If you have a `schema.sql` file that contains a number of commands you want to r
 
 ### Creating a Table
 
-We know what our schema looks like and we can send commands to the database. When creating a table we provide the types and contrains to the named columns.
+We know what our schema looks like and we can send commands to the database. When creating a table we provide the types and contraints to the named columns.
 
 ```sql
 CREATE TABLE cohorts (

@@ -730,7 +730,7 @@ If we wanted the same results as above with a `RIGHT JOIN` then we would need to
 
 ```sql
 SELECT students.id, students.name AS student_name, cohorts.name AS cohort_name
-FROM students
+FROM cohorts
 RIGHT OUTER JOIN students
 ON students.cohort_id = cohorts.id;
 ```
